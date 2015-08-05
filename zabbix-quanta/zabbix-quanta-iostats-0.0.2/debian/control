@@ -1,0 +1,13 @@
+Source: zabbix-quanta-iostats
+Section: misc
+Priority: extra
+Maintainer: Quanta Computing <sysadmin@quanta-computing.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+
+Package: zabbix-quanta-iostats
+Architecture: all
+Depends: ${misc:Depends}, zabbix-agent (>= 2.0.0)
+Description: IOstat zabbix template
+ This package provides a Zabbix IOstat template (userparameters) for use
+ with Quanta.

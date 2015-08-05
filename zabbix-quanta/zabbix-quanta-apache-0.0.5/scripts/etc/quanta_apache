@@ -1,0 +1,9 @@
+# Configuration file for zabbix-quanta-apache
+# Loaded by monitoring script
+#
+# Copyright 2015 Quanta-Computing
+#
+
+APACHE_PORT=80
+APACHE_STATUS_URL=/server-status
+APACHE_STATUS_TIMEOUT=3

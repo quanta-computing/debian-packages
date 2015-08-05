@@ -1,0 +1,13 @@
+Source: zabbix-quanta-apache
+Section: misc
+Priority: extra
+Maintainer: Quanta Computing <sysadmin@quanta-computing.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+
+Package: zabbix-quanta-apache
+Architecture: all
+Depends: ${misc:Depends}, zabbix-agent (>= 2.0.0), netcat (>= 1.10)
+Description: Apache zabbix template
+ This package provides a Zabbix Apache template (userparameters) to add
+ Apache metrics to Quanta.

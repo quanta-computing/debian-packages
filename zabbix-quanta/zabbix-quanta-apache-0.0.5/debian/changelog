@@ -1,0 +1,29 @@
+zabbix-quanta-apache (0.0.5) quanta; urgency=low
+
+  * Oops
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 24 Jul 2015 17:02:24 +0000
+
+zabbix-quanta-apache (0.0.4) quanta; urgency=low
+
+  * added TotalWorkers metric to quanta_apache.sh
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 24 Jul 2015 16:57:16 +0000
+
+zabbix-quanta-apache (0.0.3) quanta; urgency=low
+
+  * Fixed userparameter for keys with spaces
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 24 Jul 2015 14:54:10 +0000
+
+zabbix-quanta-apache (0.0.2) quanta; urgency=low
+
+  * Fixed quanta_apache.sh
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 24 Jul 2015 12:49:20 +0000
+
+zabbix-quanta-apache (0.0.1) quanta; urgency=low
+
+  * Initial Release.
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Thu, 24 Jul 2015 11:48:20 +0000
