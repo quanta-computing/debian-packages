@@ -1,0 +1,44 @@
+Description: Updates zabbix_agentd.conf for Quanta
+ Reconfigured zabbix_agentd.conf to add quanta servers in Server= directive
+ Removed the default value for Hostname=, we think it will be easier for users
+ to not have to worry with editing zabbix_agentd.conf after install.
+ .
+ zabbix (1:2.0.14-2+quanta2) quanta; urgency=low
+ .
+   * Repackaging with Quanta config files
+Author: Quanta Computing <sysadmin@quanta-computing.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- zabbix-2.0.14.orig/conf/zabbix_agentd.conf
++++ zabbix-2.0.14/conf/zabbix_agentd.conf
+@@ -78,8 +78,7 @@ LogFile=/tmp/zabbix_agentd.log
+ # Mandatory: no
+ # Default:
+ # Server=
+-
+-Server=127.0.0.1
++Server=62.4.6.33,62.4.6.34,62.4.6.35,62.4.6.36,62.4.6.37,62.4.6.38,62.4.6.39,62.4.6.40,62.4.6.41,62.4.6.42,62.4.6.43,62.4.6.44,62.4.6.45,62.4.6.46,62.4.6.47,62.4.6.48,62.4.6.49,62.4.6.50,62.4.6.51,62.4.6.52,62.4.6.53,62.4.6.54,62.4.6.55,62.4.6.56,62.4.6.57,62.4.6.58,62.4.6.59,62.4.6.60,62.4.6.61,62.4.6.62,62.4.6.63
+ 
+ ### Option: ListenPort
+ #	Agent will listen on this port for connections from the server.
+@@ -131,8 +130,6 @@ ServerActive=127.0.0.1
+ # Default:
+ # Hostname=
+ 
+-Hostname=Zabbix server
+-
+ ### Option: HostnameItem
+ #	Item used for generating Hostname if it is undefined. Ignored if Hostname is defined.
+ #	Does not support UserParameters or aliases.

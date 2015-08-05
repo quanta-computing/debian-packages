@@ -1,0 +1,91 @@
+# Esko Arajärvi <edu@iki.fi>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: zabbix\n"
+"Report-Msgid-Bugs-To: zabbix@packages.debian.org\n"
+"POT-Creation-Date: 2015-07-22 12:00+0000\n"
+"PO-Revision-Date: 2009-10-05 22:10+0300\n"
+"Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Type: note
+#. Description
+#: ../zabbix-server-mysql.templates:2001
+msgid "The SQL database must be upgraded manually"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../zabbix-server-mysql.templates:2001
+msgid ""
+"The SQL database used by Zabbix must be upgraded manually using the scripts "
+"available in /usr/share/doc/zabbix-server-mysql. Zabbix will not work "
+"properly until the database upgrade is completed."
+msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "Zabbix supports any web server supported by PHP5, however only Apache "
+#~| "can be configured automatically."
+#~ msgid ""
+#~ "The Zabbix web frontend runs on any web server that supportes PHP5. "
+#~ "However only Apache (2.x) can be configured automatically at this point."
+#~ msgstr ""
+#~ "Zabbix tukee kaikkia WWW-palvelimia, jotka tukevat PHP5:tä. Kuitenkin "
+#~ "vain Apachen asetukset voidaan tehdä automaattisesti."
+
+#, fuzzy
+#~| msgid "Restart the web server(s) now?"
+#~ msgid "Restart Apache now?"
+#~ msgstr "Käynnistetäänkö WWW-palvelimet uudelleen nyt?"
+
+#~ msgid ""
+#~ "In order to apply the changes needed for Zabbix configuration, the web "
+#~ "server needs to be restarted."
+#~ msgstr ""
+#~ "WWW-palvelimet täytyy käynnistää uudelleen Zabbixia varten tehtyjen "
+#~ "asetusten ottamiseksi käyttöön."
+
+#~ msgid ""
+#~ "Please choose whether you prefer doing it automatically now or manually "
+#~ "later."
+#~ msgstr ""
+#~ "Valitse tehdäänkö uudelleenkäynnistys automaattisesti nyt vai myöhemmin "
+#~ "käsin."
+
+#~ msgid "Zabbix server host address:"
+#~ msgstr "Zabbix-palvelimen verkko-osoite:"
+
+#~ msgid ""
+#~ "Please enter the host name or IP address of the Zabbix server you want to "
+#~ "connect to."
+#~ msgstr ""
+#~ "Anna sen Zabbix-palvelimen verkkonimi tai IP-osoite, johon haluat ottaa "
+#~ "yhteyden."
+
+#~ msgid "This is needed for some advanced frontend functionalities."
+#~ msgstr "Eräät käyttöliittymätoiminnot tarvitsevat tätä."
+
+#~ msgid "Zabbix server port:"
+#~ msgstr "Zabbix-palvelimen portti:"
+
+#~ msgid "Please enter the port used by the Zabbix server."
+#~ msgstr "Anna Zabbix-palvelimen käyttämä portti."
+
+#~ msgid "Web server to reconfigure for Zabbix:"
+#~ msgstr "WWW-palvelimet, joiden asetuksia muokataan Zabbixia varten:"
+
+#~ msgid ""
+#~ "Please select which Apache version you want to configure the Zabbix "
+#~ "frontend for."
+#~ msgstr ""
+#~ "Valitse minkä Apachen version asetuksia muokataan Zabbixin "
+#~ "käyttöliittymää varten."

@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: zabbix\n"
+"Report-Msgid-Bugs-To: zabbix@packages.debian.org\n"
+"POT-Creation-Date: 2015-07-22 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../zabbix-server-mysql.templates:2001
+msgid "The SQL database must be upgraded manually"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../zabbix-server-mysql.templates:2001
+msgid ""
+"The SQL database used by Zabbix must be upgraded manually using the scripts "
+"available in /usr/share/doc/zabbix-server-mysql. Zabbix will not work "
+"properly until the database upgrade is completed."
+msgstr ""

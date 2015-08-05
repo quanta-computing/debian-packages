@@ -1,0 +1,92 @@
+#!/bin/sh -e
+
+# If /tmp/ZABBIX_PACKAGE_DEBUG file exists then enable debugging of this script.
+#if [ -e /tmp/ZABBIX_PACKAGE_DEBUG ]; then
+#    set -x
+#fi
+
+CONFFILE1="/usr/share/zabbix-agent/zabbix_agentd.conf"
+CONFFILE_DEST1="/etc/zabbix/zabbix_agentd.conf"
+
+. /usr/share/debconf/confmodule
+db_version 2.0 || [ $? -lt 30 ]
+
+if [ "$1" = "configure" ]; then
+
+    db_get zabbix-agent/mode
+    ZBX_MODE=$RET
+    if [ -z "$ZBX_MODE" ]; then
+      ZBX_MODE=passive
+    fi
+
+    if [ "$ZBX_MODE" = "active" ]; then
+      sed "s/^ServerActive=.*/Server=zabbix-20.quanta-monitoring.com/g" < $CONFFILE1 > $CONFFILE_DEST1.new
+    fi
+    cp $CONFFILE1 $CONFFILE_DEST1.new
+    ucf --debconf-ok $CONFFILE_DEST1.new $CONFFILE_DEST1
+    rm -f $CONFFILE_DEST1.new
+
+    if ! getent group zabbix > /dev/null 2>&1 ; then
+        addgroup --system --quiet zabbix
+    fi
+
+    if ! getent passwd zabbix > /dev/null 2>&1 ; then
+        adduser --quiet \
+            --system --disabled-login --ingroup zabbix \
+            --home /var/lib/zabbix/ --no-create-home \
+            zabbix
+    fi
+
+    chown zabbix:zabbix /var/log/zabbix -R
+
+
+    db_get zabbix-agent/quanta_autoregistration_token
+    TOKEN=$RET
+    if [ ! -z "$TOKEN" ] && [ -x "$NC_BIN" ]; then
+      db_get zabbix-agent/roles
+      ROLE=""
+      case $RET in
+        *Apache*)
+          ROLE=front
+        ;;
+      esac
+      case $RET in
+        *MySQL*)
+          if [ $ROLE = "front" ]; then
+            ROLE=global
+          else
+            ROLE=database
+          fi
+        ;;
+      esac
+      if [ -z "$ROLE" ]; then
+        ROLE=unknown
+      fi
+      echo "ROLE FOR $RET: $ROLE" >&2
+      NAME=`hostname`
+      db_get zabbix-agent/ip_address
+      IP=$RET
+      DATA="{'server': {'name': '$NAME', 'host': '$IP', 'role: '$ROLE', 'enabled': true, 'template': '$MODE'}}"
+
+      # Find the netcat binary
+      CURL_BIN=/usr/bin/curl
+      CURL_TIMEOUT=5
+      if [ ! -x $CURL_BIN ]; then
+        CURL_BIN=`which curl | head -1`
+      fi
+
+      if [ ! -z "$CURL_BIN" ]; then
+        # Perform an API call to Quanta to autoregister this zabbix-agent
+        echo curl -s -H 'Content-Type: application/json' --data "$DATA" "https://www.quanta-monitoring.com/api/system/autoregister/$TOKEN" -o /dev/null
+      else
+        echo "Cannot autoregister zabbix-agent: curl was not found"
+      fi
+    fi
+
+fi
+
+db_stop
+
+#DEBHELPER#
+
+exit 0

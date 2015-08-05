@@ -1,0 +1,27 @@
+Template: zabbix-agent/ip_address
+Type: string
+Description: Public IP address
+ Enter the public IP address on which zabbix-agent will be reachable
+ on this server.
+
+Template: zabbix-agent/quanta_autoregistration_token
+Type: string
+Description: Your Quanta autoregistration token
+ You can fetch your token on https://www.quanta-monitoring.com
+ in your site or servers settings panel.
+
+Template: zabbix-agent/roles
+Type: multiselect
+Choices: Apache, MySQL
+Description: Roles
+ Select the components for which you'd like to have metrics in Quanta.
+
+Template: zabbix-agent/mode
+Type: select
+Choices: active, passive
+Default: passive
+Description: Zabbix-agent connection mode
+  In passive mode (default), Quanta servers will connect to this zabbix-agent
+  to fetch metrics.
+  In active mode, this zabbix-agent will connect to Quanta servers to fetch
+  the metric list and send back the values.
