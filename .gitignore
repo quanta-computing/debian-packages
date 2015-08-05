@@ -30,3 +30,24 @@
 
 # Debug files
 *.dSYM/
+
+# Debian packages files
+*.deb
+*.build
+*.changes
+*.upload
+*.tar.gz
+*.dsc
+*.debhelper.log
+
+# Specific packages files
+zabbix-quanta/zabbix-quanta-iostats-*/debian/zabbix-quanta-iostats/*
+zabbix-quanta/zabbix-quanta-apache-*/debian/zabbix-quanta-apache/*
+zabbix/zabbix-2.0.14/debian/.pc/
+zabbix/zabbix-2.0.14/debian/tmp-build-*/*
+zabbix/zabbix-2.0.14/debian/zabbix-agent/*
+zabbix/zabbix-2.0.14/debian/zabbix-get/*
+zabbix/zabbix-2.0.14/debian/zabbix-proxy-mysql/*
+zabbix/zabbix-2.0.14/debian/zabbix-sender/*
+zabbix/zabbix-2.0.14/debian/zabbix-server-mysql/*
+zabbix/zabbix-2.0.14/debian/zabbix-agent/*
