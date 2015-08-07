@@ -51,3 +51,13 @@ zabbix/zabbix-2.0.14/debian/zabbix-proxy-mysql/*
 zabbix/zabbix-2.0.14/debian/zabbix-sender/*
 zabbix/zabbix-2.0.14/debian/zabbix-server-mysql/*
 zabbix/zabbix-2.0.14/debian/zabbix-agent/*
+zabbix/zabbix-2.0.14/debian/*.debhelper
+zabbix/zabbix-2.0.14/debian/*.substvars
+zabbix/zabbix-2.0.14/debian/*-stamp
+zabbix/zabbix-2.0.14/*-stamp
+zabbix/zabbix-2.0.14/config.guess.orig
+zabbix/zabbix-2.0.14/config.sub.orig
+zabbix/zabbix-2.0.14/.pc/*
+zabbix/zabbix-2.0.14/debian/stamp-patched
+zabbix/zabbix-2.0.14/debian/files
+zabbix/zabbix-2.0.14/debian/templates/*
