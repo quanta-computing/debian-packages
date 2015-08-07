@@ -16,13 +16,14 @@ if [ "$1" = "configure" ]; then
     db_get zabbix-agent/mode
     ZBX_MODE=$RET
     if [ -z "$ZBX_MODE" ]; then
-      ZBX_MODE=passive
+      ZBX_MODE="passive"
     fi
 
-    if [ "$ZBX_MODE" = "active" ]; then
-      sed "s/^ServerActive=.*/Server=zabbix-20.quanta-monitoring.com/g" < $CONFFILE1 > $CONFFILE_DEST1.new
-    fi
     cp $CONFFILE1 $CONFFILE_DEST1.new
+    if [ "$ZBX_MODE" = "active" ]; then
+      echo "Salut les loosers" >&2
+      sed -e 's/^ServerActive=.*/ServerActive=zabbix-20-1.quanta-computing.com/g' < $CONFFILE1 > $CONFFILE_DEST1.new
+    fi
     ucf --debconf-ok $CONFFILE_DEST1.new $CONFFILE_DEST1
     rm -f $CONFFILE_DEST1.new
 
@@ -39,50 +40,55 @@ if [ "$1" = "configure" ]; then
 
     chown zabbix:zabbix /var/log/zabbix -R
 
+    # Find roles and packages based on provided roles
+    db_get zabbix-agent/roles
+    ROLE=""
+    PKGS=""
+    case $RET in
+      *Apache*)
+        ROLE=front
+        PKGS="$PGKS zabbix-quanta-apache"
+      ;;
+    esac
+    case $RET in
+      *MySQL*)
+        if [ "$ROLE" = "front" ]; then
+          ROLE=global
+        else
+          ROLE=database
+        fi
+      ;;
+    esac
+    if [ -z "$ROLE" ]; then
+      ROLE=unknown
+    fi
+
+    # Suggests to install additional packages
+    if [ ! -z "$PKGS" ]; then
+      echo "You should install the following extra package to get your metrics in Quanta: $PKGS" >&2
+    fi
+
+    # Find the netcat binary
+    CURL_BIN='/usr/bin/curl'
+    CURL_TIMEOUT=5
+    if [ ! -x $CURL_BIN ]; then
+      CURL_BIN=`which curl | head -1`
+    fi
 
     db_get zabbix-agent/quanta_autoregistration_token
     TOKEN=$RET
-    if [ ! -z "$TOKEN" ] && [ -x "$NC_BIN" ]; then
-      db_get zabbix-agent/roles
-      ROLE=""
-      case $RET in
-        *Apache*)
-          ROLE=front
-        ;;
-      esac
-      case $RET in
-        *MySQL*)
-          if [ $ROLE = "front" ]; then
-            ROLE=global
-          else
-            ROLE=database
-          fi
-        ;;
-      esac
-      if [ -z "$ROLE" ]; then
-        ROLE=unknown
-      fi
-      echo "ROLE FOR $RET: $ROLE" >&2
+
+    if [ ! -z "$TOKEN" ] && [ ! -z "$CURL_BIN" ]; then
       NAME=`hostname`
       db_get zabbix-agent/ip_address
       IP=$RET
-      DATA="{'server': {'name': '$NAME', 'host': '$IP', 'role: '$ROLE', 'enabled': true, 'template': '$MODE'}}"
+      DATA="{\"server\": {\"name\": \"$NAME\", \"host\": \"$IP\", \"role\": \"$ROLE\", \"enabled\": true, \"template\": \"$ZBX_MODE\"}}"
 
-      # Find the netcat binary
-      CURL_BIN=/usr/bin/curl
-      CURL_TIMEOUT=5
-      if [ ! -x $CURL_BIN ]; then
-        CURL_BIN=`which curl | head -1`
-      fi
-
-      if [ ! -z "$CURL_BIN" ]; then
-        # Perform an API call to Quanta to autoregister this zabbix-agent
-        echo curl -s -H 'Content-Type: application/json' --data "$DATA" "https://www.quanta-monitoring.com/api/system/autoregister/$TOKEN" -o /dev/null
-      else
-        echo "Cannot autoregister zabbix-agent: curl was not found"
-      fi
+      # Perform an API call to Quanta to autoregister this zabbix-agent
+      $CURL_BIN -s -H 'Content-Type: application/json' -X POST --data "$DATA" "https://staging.quanta.gr/api/system/autoregister/$TOKEN" -o /dev/null
+    else
+      echo "Cannot autoregister zabbix-agent" >&2
     fi
-
 fi
 
 db_stop

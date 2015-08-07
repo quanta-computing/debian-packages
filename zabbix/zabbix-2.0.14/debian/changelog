@@ -1,3 +1,9 @@
+zabbix (1:2.0.14-2+quanta3) UNRELEASED; urgency=low
+
+  * Updated maintainer scripts 
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 07 Aug 2015 16:57:42 +0000
+
 zabbix (1:2.0.14-2+quanta2) quanta; urgency=low
 
   * Maintainer scripts for zabbix-agent
