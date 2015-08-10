@@ -43,7 +43,7 @@ if [ "$1" = "configure" ]; then
     # Find roles and packages based on provided roles
     db_get zabbix-agent/roles
     ROLE=""
-    PKGS=""
+    PKGS="zabbix-quanta-iostats"
     case $RET in
       *Apache*)
         ROLE=front
@@ -65,7 +65,7 @@ if [ "$1" = "configure" ]; then
 
     # Suggests to install additional packages
     if [ ! -z "$PKGS" ]; then
-      echo "You should install the following extra package to get your metrics in Quanta: $PKGS" >&2
+      echo "You should install the following extra packages to get your metrics in Quanta: $PKGS" >&2
     fi
 
     # Find the netcat binary
@@ -85,9 +85,16 @@ if [ "$1" = "configure" ]; then
       DATA="{\"server\": {\"name\": \"$NAME\", \"host\": \"$IP\", \"role\": \"$ROLE\", \"enabled\": true, \"template\": \"$ZBX_MODE\"}}"
 
       # Perform an API call to Quanta to autoregister this zabbix-agent
-      $CURL_BIN -s -H 'Content-Type: application/json' -X POST --data "$DATA" "https://staging.quanta.gr/api/system/autoregister/$TOKEN" -o /dev/null
+      QUANTA_URL="https://www.quanta-monitoring.com"
+      if $CURL_BIN -s -m 30 -w '%{http_code}' -H 'Content-Type: application/json' -X POST --data "$DATA" "$QUANTA_URL/api/system/autoregister/$TOKEN" -o /dev/null 2>&1 \
+      | grep 200 >/dev/null
+      then
+        echo "Registered $NAME on Quanta, please check if everything is OK in Quanta (settings -> system)" >&2
+      else
+        echo "Uh oh... An error occured while registering zabbix-agent" >&2
+      fi
     else
-      echo "Cannot autoregister zabbix-agent" >&2
+      echo "Auto-registration is not possible (token not provided)" >&2
     fi
 fi
 

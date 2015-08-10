@@ -1,6 +1,19 @@
-zabbix (1:2.0.14-2+quanta3) UNRELEASED; urgency=low
+zabbix (1:2.0.14-2+quanta5) quanta; urgency=low
 
-  * Updated maintainer scripts 
+  * Some debug info removed from config script 
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 10 Aug 2015 12:47:19 +0000
+
+zabbix (1:2.0.14-2+quanta4) quanta; urgency=low
+
+  * Error checking on auto-registration
+  * Suggests IP in debconf 
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 10 Aug 2015 10:20:45 +0000
+
+zabbix (1:2.0.14-2+quanta3) quanta; urgency=low
+
+  * Updated maintainer scripts
 
  -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 07 Aug 2015 16:57:42 +0000
 
@@ -216,9 +229,9 @@ zabbix (1:1.8.5-2) unstable; urgency=low
   * Removed barely used zabbix_agent.conf (closes: #571419)
   * Postinst scripts move 'zabbix' user's home directory to /var/run/zabbix
     (closes: #593458)
-  * Hostname= is not set any more in the zabbix_agentd.conf file 
+  * Hostname= is not set any more in the zabbix_agentd.conf file
     (closes: #606160)
-  * zabbix-frontend-php package no longer installs database server 
+  * zabbix-frontend-php package no longer installs database server
     (closes: #607810)
 
  -- Christoph Haas <haas@debian.org>  Sat, 18 Jun 2011 23:01:09 +0200
@@ -255,7 +268,7 @@ zabbix (1:1.8.4-1) unstable; urgency=low
 zabbix (1:1.8.3-3) unstable; urgency=low
 
   [ Michael Ablassmeier ]
-  * zabbix-proxy-pgsql and -mysql: Fix package description (Closes: #586961) 
+  * zabbix-proxy-pgsql and -mysql: Fix package description (Closes: #586961)
   * debian/po/da.po: added (Closes: #585485)
 
  -- Michael Ablassmeier <abi@debian.org>  Tue, 08 Feb 2011 21:27:46 +0100
@@ -431,7 +444,7 @@ zabbix (1:1.6.4-1) unstable; urgency=low
      zabbix-server and port (Closes: #522076)
    * Loosen up depends for libgnutls (Closes: #522074)
 
- -- Michael Ablassmeier <abi@debian.org>  Sun, 05 Apr 2009 19:10:27 +0200 
+ -- Michael Ablassmeier <abi@debian.org>  Sun, 05 Apr 2009 19:10:27 +0200
 
 zabbix (1:1.6.3-1) unstable; urgency=low
 
@@ -447,7 +460,7 @@ zabbix (1:1.6.3-1) unstable; urgency=low
  -- Michael Ablassmeier <abi@debian.org>  Sat, 28 Mar 2009 16:11:34 +0100
 
 zabbix (1:1.6.2-3) unstable; urgency=low
-  
+
   * Update dbconfig.php to new config file layout.
   * Debconf templates and debian/control reviewed by the debian-l10n-
     english team as part of the Smith review project.
@@ -513,7 +526,7 @@ zabbix (1:1.6.1-2) unstable; urgency=low
 zabbix (1:1.6.1-1) unstable; urgency=low
 
   * New upstream release (Closes: #504565, #501776)
-  * Depend on both php5 and php5-mysql not on only one 
+  * Depend on both php5 and php5-mysql not on only one
     (Closes: #450525, #503433)
   * Build Packages with Zabbix Proxy Support, thanks to Bart Verwilst
     for his patches
@@ -570,7 +583,7 @@ zabbix (1:1.4.4-1) unstable; urgency=high
 
   * New upstream release
   * Remove patch for vm memory size and CVE, both have been
-    merged upstream. 
+    merged upstream.
   * Compile server with jabber support, add libiksemel-dev to b-d
     Closes: #454541
   * Add nl.po (Closes: #448929)
@@ -732,7 +745,7 @@ zabbix (1:1.1.4-8) unstable; urgency=high
 
 zabbix (1:1.1.4-7) unstable; urgency=high
 
-  * Manage configuration files for zabbix-agent and zabbix-frontend-php 
+  * Manage configuration files for zabbix-agent and zabbix-frontend-php
     with ucf in order to prevent user specified data to be overwritten on
     package Upgrade. (Closes: #408489)
   * Add ucf to dependencies.
@@ -786,7 +799,7 @@ zabbix (1:1.1.4-2) unstable; urgency=low
 zabbix (1:1.1.4-1) unstable; urgency=low
 
   * New upstream version
-  * Add Portuguese debconf translation, thanks 
+  * Add Portuguese debconf translation, thanks
     Miguel Figueiredo (Closes: #398301)
   * Updated French Debconf translation, thanks
     Yves Rutschle (Closes: #398514)
@@ -805,7 +818,7 @@ zabbix (1:1.1.3-2) unstable; urgency=low
 zabbix (1:1.1.3-1) unstable; urgency=low
 
     [ Michael Ablassmeier ]
-    * Zabbix agent and server fail to properly detach from console 
+    * Zabbix agent and server fail to properly detach from console
       after startup. Add work-around to both init scripts. Thanks
       Hannu Teulahti (Closes: #393623)
     * patches/01_log.c.dpatch: remove, merged upstream
@@ -834,11 +847,11 @@ zabbix (1:1.1.2-3) experimental; urgency=low
   [ Michael Ablassmeier ]
    * First steps in PostgreSQL implementation:
      + add new Binary package zabbix-server-pgsql to control
-     + re-add Build-Dependency on libpq-dev 
+     + re-add Build-Dependency on libpq-dev
      + add zabbix-server-pgsql.{config,postinst,prerm,postrm,init}
      + add PGSQL to selection in zabbix-frontend-php.templates
      + Add conflicts from/to zabbix-server-mysql/pgsql
-     + Complete re-write of debian/rules in order to be able 
+     + Complete re-write of debian/rules in order to be able
        to build zabbix-server binaries both with mysql and pgsql
        support (can not be linked to both libraries together)
      + Remove config.sub and config.guess from .diff.gz.
@@ -848,7 +861,7 @@ zabbix (1:1.1.2-3) experimental; urgency=low
 zabbix (1:1.1.2-2) unstable; urgency=low
 
   * Add debian/patches/06_data.sql.dpatch: Do not insert
-    spaces into URL field, otherwise Logging into the 
+    spaces into URL field, otherwise Logging into the
     Web-Frontend using http://localhost/zabbix/ fails.
     Closes: #388410
 
@@ -866,7 +879,7 @@ zabbix (1:1.1.2-1) unstable; urgency=low
     is installed on the same host.
   * patches/04_expression.c.dpatch: Fix substitution of variables
     in Actions, see dpatch Description for more Info.
-  * patches/05_maps.inc.php.dpatch: Fix for broken icons in 
+  * patches/05_maps.inc.php.dpatch: Fix for broken icons in
     network plans
   * Add Swedish po file, thanks Daniel Nylander (Closes: #387288)
 
@@ -916,7 +929,7 @@ zabbix (1:1.1.1-2) unstable; urgency=low
        (Closes: #378982)
   * debian/patches/01_log.c.dpatch:
      + disable zabbix-server and zabbix-agent internal logrotation, we use
-       logrotate for this. 
+       logrotate for this.
 
  -- Michael Ablassmeier <abi@debian.org>  Wed, 19 Jul 2006 16:26:33 +0200
 
@@ -933,10 +946,10 @@ zabbix (1:1.1-6) unstable; urgency=low
 
   * all:
     + integrate dpatch:
-    + Adjust debconf templates (Closes: #374493) 
+    + Adjust debconf templates (Closes: #374493)
     + Add French Translation, thanks Yves Rutschle (Closes: #375569)
   * zabbix-agent:
-      + add debian/patches/01_zabbix_agentd.c.dpatch: patch from CVS 
+      + add debian/patches/01_zabbix_agentd.c.dpatch: patch from CVS
         for re-using open Sockets (Closes: #374758)
       + add debian/patches/03_zabbix_agentd.c-tmp.dpatch: rough patch
         for removing tmp file on agent shutdown. (Closes: #376681)
@@ -955,7 +968,7 @@ zabbix (1:1.1-5) unstable; urgency=low
     + Remove needless if statement from zabbix-frontend-php.config
     + Remove obsolete /etc/zabbix/db.inc.php on upgrade
     + use dbconfig-load-include if zabbix-server-mysql is installed
-      on the same host in order to get the password for the database 
+      on the same host in order to get the password for the database
       user.
   * zabbix-server-mysql:
     + move zabbix-frontend-php from Recommends to Suggests
@@ -999,7 +1012,7 @@ zabbix (1:1.1-1) unstable; urgency=low
 
   * New upstream release
   * Minor update for README.Debian.
-  * Remove unnecessary Build-Depend on po-debconf, debhelper version 
+  * Remove unnecessary Build-Depend on po-debconf, debhelper version
     >= 4.1.16 already does so.
   * Install Database patches for upgrade from 1.1beta9 to 1.1beta12 and
     1:1.1 for dbconfig-common.

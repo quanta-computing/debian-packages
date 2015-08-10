@@ -14,7 +14,7 @@ scp_compress            = 0
 allowed_distributions   = (?!UNRELEASED)
 
 [quanta]
-login                   = *
+login                   = korrigan
 fqdn                    = pkg-1.quanta.gr
 method                  = scp
 incoming                = /data/pkg/apt/mini-dinstall/incoming
