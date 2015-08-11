@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+if which invoke-rc.d >/dev/null 2>&1; then
+  invoke-rc.d zabbix-agent restart
+else
+  /etc/init.d/zabbix-agent restart
+fi
+
+#DEBHELPER#
+
+exit 0

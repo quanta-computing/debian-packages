@@ -1,0 +1,36 @@
+zabbix-quanta-iostats (0.0.4) quanta; urgency=low
+
+  * Updated discovery rule to provide sector size
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Tue, 11 Aug 2015 09:34:03 +0000
+
+zabbix-quanta-iostats (0.0.3-2) quanta; urgency=low
+
+  * Fixed a lintian warning 
+
+ -- Quanta Computing <root@c2712433a4da>  Mon, 10 Aug 2015 16:41:15 +0000
+
+zabbix-quanta-iostats (0.0.3-1) quanta; urgency=low
+
+  * Created postinst script to restart zabbix-agent 
+
+ -- Quanta Computing <root@c2712433a4da>  Mon, 10 Aug 2015 16:32:59 +0000
+
+zabbix-quanta-iostats (0.0.3) quanta; urgency=low
+
+  * Added disk discovery LLD script. 
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 10 Aug 2015 16:27:09 +0000
+
+zabbix-quanta-iostats (0.0.2) quanta; urgency=low
+
+  * Fixed package dependencies.
+  * Renamed UserParameters keys to use quanta prefix.
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Fri, 24 Jul 2015 10:04:04 +0000
+
+zabbix-quanta-iostats (0.0.1) quanta; urgency=low
+
+  * Initial Release.
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Thu, 23 Jul 2015 13:59:20 +0000
