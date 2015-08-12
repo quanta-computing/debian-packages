@@ -1,3 +1,3 @@
 #!/bin/sh
-dpkg --purge zabbix-agent
-echo PURGE | debconf-communicate zabbix-agent
+dpkg --purge zabbix-quanta-mysql
+echo PURGE | debconf-communicate zabbix-quanta-mysql
