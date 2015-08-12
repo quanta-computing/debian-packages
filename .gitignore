@@ -43,6 +43,7 @@
 # Specific packages files
 zabbix-quanta/zabbix-quanta-iostats-*/debian/zabbix-quanta-iostats/*
 zabbix-quanta/zabbix-quanta-apache-*/debian/zabbix-quanta-apache/*
+zabbix-quanta/zabbix-quanta-mysql-*/debian/zabbix-quanta-mysql/*
 zabbix-quanta/*/debian/files
 zabbix-quanta/*/debian/*.substvars
 zabbix/zabbix-2.0.14/debian/.pc/
