@@ -1,0 +1,14 @@
+Source: zabbix-quanta-mysql
+Section: misc
+Priority: extra
+Maintainer: Quanta Computing <sysadmin@quanta-computing.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+
+Package: zabbix-quanta-mysql
+Architecture: all
+Pre-Depends: dbconfig-common
+Depends: ${misc:Depends}, zabbix-agent (>= 2.0.0), mysql-client (>= 5.1)
+Description: MySQL zabbix template
+ This package provides a Zabbix MySQL template (userparameters) to add
+ some MySQL metrics to Quanta.

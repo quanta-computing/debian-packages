@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+if [ -f /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+fi
+if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
+	. /usr/share/dbconfig-common/dpkg/postrm.mysql
+	dbc_go zabbix-quanta-mysql $@
+fi
+
+if [ "$1" = "purge" ]; then
+	rm -f /var/lib/zabbix/quanta/etc/quanta_mysql
+	rm -f /usr/share/dbconfig-common/data/zabbix-quanta-mysql/install/mysql/quanta_mysql
+	if which ucf >/dev/null 2>&1; then
+		ucf --purge /var/lib/zabbix/quanta/etc/quanta_mysql
+		ucfr --purge zabbix-quanta-mysql /var/lib/zabbix/quanta/etc/quanta_mysql
+		ucf --purge /usr/share/dbconfig-common/data/zabbix-quanta-mysql/install/mysql/quanta_mysql
+		ucfr --purge zabbix-quanta-mysql /usr/share/dbconfig-common/data/zabbix-quanta-mysql/install/mysql/quanta_mysql
+	fi
+fi
+
+#DEBHELPER#

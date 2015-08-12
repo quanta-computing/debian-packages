@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+if [ -f /usr/share/dbconfig-common/dpkg/frontend.config.mysql ]; then
+	. /usr/share/dbconfig-common/dpkg/frontend.config.mysql
+	dbc_dbuser=zabbix-quanta
+	dbc_dbname=zabbix_quanta
+	dbc_go zabbix-quanta-mysql $@
+fi
