@@ -1,3 +1,15 @@
+zabbix (1:2.0.14-2+quanta7) quanta; urgency=low
+
+  * fix typo
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 17 Aug 2015 10:08:40 +0000
+
+zabbix (1:2.0.14-2+quanta6) quanta; urgency=low
+
+  * Removed debug 
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 17 Aug 2015 09:48:46 +0000
+
 zabbix (1:2.0.14-2+quanta5) quanta; urgency=low
 
   * Some debug info removed from config script 
