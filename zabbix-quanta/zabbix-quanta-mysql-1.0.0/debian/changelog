@@ -1,0 +1,36 @@
+zabbix-quanta-mysql (1.0.0-1) quanta; urgency=low
+
+  * Removed debug
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 17 Aug 2015 09:24:14 +0000
+
+zabbix-quanta-mysql (1.0.0) quanta; urgency=low
+
+  * Bumped to 1.0.0
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Mon, 17 Aug 2015 09:11:51 +0000
+
+zabbix-quanta-mysql (0.0.3) quanta; urgency=low
+
+  * Trying to fix an issue with invoke-rc.d 
+
+ -- Quanta Computing <root@c2712433a4da>  Thu, 13 Aug 2015 09:39:19 +0000
+
+zabbix-quanta-mysql (0.0.2-1) quanta; urgency=low
+
+  * Restarting zabbix-agent upon install
+  * Fix a permission issue on /var/lib/zabbix/quanta/etc/quanta_mysql
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Thu, 13 Aug 2015 09:21:12 +0000
+
+zabbix-quanta-mysql (0.0.2) quanta; urgency=low
+
+  * Added dbconfig-common
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Wed, 12 Aug 2015 15:24:14 +0000
+
+zabbix-quanta-mysql (0.0.1) quanta; urgency=low
+
+  * Initial release.
+
+ -- Quanta Computing <sysadmin@quanta-computing.com>  Wed, 12 Aug 2015 12:39:36 +0000

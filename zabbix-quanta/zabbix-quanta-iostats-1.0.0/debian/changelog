@@ -1,3 +1,9 @@
+zabbix-quanta-iostats (1.0.0) quanta; urgency=low
+
+  * Bumped to 1.0.0 
+
+ -- Quanta Computing <root@c2712433a4da>  Mon, 17 Aug 2015 09:30:02 +0000
+
 zabbix-quanta-iostats (0.0.4) quanta; urgency=low
 
   * Updated discovery rule to provide sector size
