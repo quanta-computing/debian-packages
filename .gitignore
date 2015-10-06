@@ -40,6 +40,9 @@
 *.dsc
 *.debhelper.log
 
+# RPM files
+*.rpm
+
 # Specific packages files
 zabbix-quanta/zabbix-quanta-iostats-*/debian/zabbix-quanta-iostats/*
 zabbix-quanta/zabbix-quanta-apache-*/debian/zabbix-quanta-apache/*
