@@ -4,12 +4,31 @@
 # It then runs rpmbuild to build the package from the spec
 
 if [ -z "$1" ]; then
-  echo "Usage: buildpackage.sh <package>"
+  echo "Usage: buildpackage.sh <package> [package_dir]"
   exit 1
 fi
 
-PKGD=/build/zabbix-quanta/
+if [ -z "$2" ]; then
+  PKGD=/build/zabbix-quanta
+else
+  PKGD=$2
+fi
+
+SRCD=/root/rpmbuild/SOURCES
+SPECD=/root/rpmbuild/SPECS
+
 PKG=$1
 
-PKGPATH=`find ${PKGD} -name '${PKG}-*' | head -1`
-echo $PKGPATH
+PKGTAR=${SRCD}/$PKG.tar.gz
+PKGNAME=`find ${PKGD} -type d -name ${PKG}-\* -printf "%f\n" | head -1`
+PKGPATH=$PKGD/$PKGNAME
+
+echo 'Creating TAR achive'
+rm -vf $PKGTAR
+tar -C $PKGD -czf $PKGTAR $PKGNAME
+
+echo 'Copying spec file'
+cp -vf $PKGPATH/$PKG.spec $SPECD
+
+echo 'Building package'
+rpmbuild -ba $SPECD/$PKG.spec

@@ -6,14 +6,15 @@ License: GPL
 Distribution: Quanta
 Vendor: Quanta-Computing
 Packager: Matthieu ROSINSKI <sysadmin@quanta-computing.com>
-Source: zabbix-quanta-iostats_1.0.0.tar.gz
+Source: zabbix-quanta-iostats.tar.gz
+Requires: zabbix-agent >= 2.0
 
 %description
 This package provides a Zabbix IOstat template (userparameters) for use
 with Quanta.
 
 %prep
-rm -rf $RPM_BUILD_DIR/zabbix-quanta-iostats-1.0
+rm -rf $RPM_BUILD_DIR/zabbix-quanta-iostats-*
 zcat %{SOURCE0} | tar -xvf -
 
 %build
