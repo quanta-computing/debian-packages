@@ -16,7 +16,8 @@ fi
 
 SRCD=/root/rpmbuild/SOURCES
 SPECD=/root/rpmbuild/SPECS
-
+RPMD=/root/rpmbuild/RPMS
+UPLOADD=/build/RPMS
 PKG=$1
 
 PKGTAR=${SRCD}/$PKG.tar.gz
@@ -32,3 +33,6 @@ cp -vf $PKGPATH/$PKG.spec $SPECD
 
 echo 'Building package'
 rpmbuild -ba $SPECD/$PKG.spec
+
+echo 'Copying packages to upload directory'
+find $RPMD -name "*.rpm" -exec cp \{\} $UPLOADD \;
