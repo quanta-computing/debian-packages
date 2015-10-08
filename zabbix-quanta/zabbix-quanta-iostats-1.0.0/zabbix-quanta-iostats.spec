@@ -21,10 +21,10 @@ zcat %{SOURCE0} | tar -xvf -
 
 %install
 mkdir -pv $RPM_BUILD_ROOT/var/lib/zabbix/quanta
-mkdir -pv $RPM_BUILD_ROOT/etc/zabbix/zabbix-agentd.d/
+mkdir -pv $RPM_BUILD_ROOT/etc/zabbix/zabbix_agentd.d/
 cp -vr $RPM_BUILD_DIR/zabbix-quanta-iostats-1.0.0/scripts/bin/ $RPM_BUILD_ROOT/var/lib/zabbix/quanta/.
-cp -v $RPM_BUILD_DIR/zabbix-quanta-iostats-1.0.0/conf/quanta_iostsats.conf $RPM_BUILD_ROOT/etc/zabbix/zabbix-agentd.d/quanta_iostats.conf
+cp -v $RPM_BUILD_DIR/zabbix-quanta-iostats-1.0.0/conf/quanta_iostsats.conf $RPM_BUILD_ROOT/etc/zabbix/zabbix_agentd.d/quanta_iostats.conf
 
 %files
-%config /etc/zabbix/zabbix-agentd.d/quanta_iostats.conf
+%config /etc/zabbix/zabbix_agentd.d/quanta_iostats.conf
 /var/lib/zabbix/quanta/bin/quanta_disk_discovery.sh
